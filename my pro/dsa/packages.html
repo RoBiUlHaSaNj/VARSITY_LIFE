@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Packages Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background-color: #eef;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 1.1em;
+        }
+        .code-block {
+            background-color: #eef;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Understanding Packages in Java</h1>
+    <p>In Java, a <strong>package</strong> is a way to organize classes and interfaces into namespaces, providing a structured way to manage code and avoid naming conflicts. Packages also help with access control and code reuse.</p>
+
+    <h2>Benefits of Using Packages</h2>
+    <ul>
+        <li><strong>Organized Code Structure:</strong> Packages organize code into logical units, making it more manageable.</li>
+        <li><strong>Avoid Naming Conflicts:</strong> Packages allow classes with the same name to exist in different namespaces.</li>
+        <li><strong>Access Control:</strong> Packages help control access to classes and interfaces, enhancing security and modularity.</li>
+        <li><strong>Reusability:</strong> Classes within a package can be reused across different applications.</li>
+    </ul>
+
+    <h2>Creating and Using Packages</h2>
+    
+    <h3>1. Defining a Package</h3>
+    <p>A package is defined at the beginning of a Java file using the <code>package</code> keyword:</p>
+    <div class="code-block">
+        <code>
+        package com.example.myapp;<br><br>
+        public class MyClass {<br>
+            &nbsp;&nbsp;public void displayMessage() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Hello from MyClass!");<br>
+            &nbsp;&nbsp;}<br>
+        }
+        </code>
+    </div>
+
+    <h3>2. Using a Package</h3>
+    <p>There are two ways to use a class from a package:</p>
+    <ul>
+        <li><strong>Importing a Class:</strong></li>
+    </ul>
+    <div class="code-block">
+        <code>
+        import com.example.myapp.MyClass;<br><br>
+        public class Main {<br>
+            &nbsp;&nbsp;public static void main(String[] args) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;MyClass myClass = new MyClass();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;myClass.displayMessage();<br>
+            &nbsp;&nbsp;}<br>
+        }
+        </code>
+    </div>
+    <ul>
+        <li><strong>Using the Fully Qualified Name:</strong></li>
+    </ul>
+    <div class="code-block">
+        <code>
+        public class Main {<br>
+            &nbsp;&nbsp;public static void main(String[] args) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;com.example.myapp.MyClass myClass = new com.example.myapp.MyClass();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;myClass.displayMessage();<br>
+            &nbsp;&nbsp;}<br>
+        }
+        </code>
+    </div>
+
+    <h3>3. Package Hierarchy</h3>
+    <p>Java supports hierarchical packages, represented with dot notation:</p>
+    <div class="code-block">
+        <code>
+        package com.example.myapp.services;<br><br>
+        public class UserService {<br>
+            &nbsp;&nbsp;public void getUserDetails() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Fetching user details...");<br>
+            &nbsp;&nbsp;}<br>
+        }
+        </code>
+    </div>
+
+    <h3>4. Default Package</h3>
+    <p>If a class is not explicitly placed in a package, it is part of the default package. This is discouraged in larger projects due to organization and naming conflicts.</p>
+
+    <h2>Access Modifiers and Packages</h2>
+    <p>Access modifiers control visibility of classes and members:</p>
+    <ul>
+        <li><strong>Public:</strong> Accessible from any class in any package.</li>
+        <li><strong>Protected:</strong> Accessible within the same package and subclasses.</li>
+        <li><strong>Default (Package-Private):</strong> Accessible only within the same package.</li>
+        <li><strong>Private:</strong> Accessible only within the defining class.</li>
+    </ul>
+
+    <h2>Commonly Used Java Packages</h2>
+    <ul>
+        <li><code>java.lang</code>: Contains fundamental classes like <code>String</code>, <code>System</code>, <code>Math</code>.</li>
+        <li><code>java.util</code>: Contains utility classes like <code>ArrayList</code>, <code>HashMap</code>.</li>
+        <li><code>java.io</code>: Contains I/O classes like <code>File</code>, <code>InputStream</code>.</li>
+        <li><code>java.net</code>: Contains networking classes like <code>Socket</code>, <code>URL</code>.</li>
+        <li><code>java.awt</code> and <code>javax.swing</code>: Contain GUI classes.</li>
+    </ul>
+
+    <h2>Creating a Custom Package</h2>
+    <p>Organize files in a directory structure matching the package hierarchy. For example:</p>
+    <div class="code-block">
+        <code>
+        src/<br>
+        └── com/<br>
+        &nbsp;&nbsp;└── example/<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;└── myapp/<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── MyClass.java<br>
+        </code>
+    </div>
+
+    <h3>Compiling and Running</h3>
+    <p>Compile:</p>
+    <div class="code-block">
+        <code>javac -d . src/com/example/myapp/MyClass.java</code>
+    </div>
+    <p>Run:</p>
+    <div class="code-block">
+        <code>java com.example.myapp.MyClass</code>
+    </div>
+
+    <h2>Summary</h2>
+    <p>Packages are fundamental in Java for organizing code, managing namespaces, controlling access, and promoting reusability. Proper package use results in maintainable and scalable applications.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBMS</title>
+    <style>
+        
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #0000fa;
+        }
+        h2 {
+            color: #2980b9;
+        }
+        h3 {
+            color: #27ae60;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        code {
+            background: #f9f9f9;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: #c7254e;
+            font-family: "Courier New", Courier, monospace;
+        }
+        ul {
+            margin: 10px 0;
+            padding: 0 20px;
+        }
+        .example {
+            background: #e8f4fc;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #007bff;
+        }
+        
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-left: 3px solid #2980b9;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DBMS Overview</title>
+    </head>
+    <body>
+        <div class="container">
+        <h1>1. What is DBMS?</h1>
+        <p>DBMS (Database Management System) is software that helps in storing, organizing, and managing data efficiently. It acts as an interface between the database and the user, ensuring data can be easily accessed, modified, and managed.</p>
+    
+        <h1>2. Types of Databases</h1>
+        <p>Mainly 4 types:</p>
+        <ol>
+            <li><strong>Relational Database:</strong> Stores data in tables with rows and columns (e.g., MySQL, PostgreSQL).</li>
+            <li><strong>Hierarchical Database:</strong> Organizes data in a tree-like structure (e.g., IBM IMS).</li>
+            <li><strong>Network Database:</strong> Uses a graph structure to represent data and relationships (e.g., Integrated Data Store).</li>
+            <li><strong>Object-Oriented Database:</strong> Stores data as objects (e.g., ObjectDB).</li>
+        </ol>
+        <p>More types:</p>
+        <ul>
+            <li><strong>Cloud Database:</strong> Hosted on cloud platforms, scalable and accessible from anywhere (e.g., AWS DynamoDB).</li>
+            <li><strong>In-Memory Database:</strong> Stores data in memory for fast access (e.g., Redis).</li>
+            <li><strong>NoSQL Database:</strong> Handles unstructured or semi-structured data like JSON or key-value pairs (e.g., MongoDB, Cassandra).</li>
+        </ul>
+    
+        <h1>3. Advantages of Using DBMS:</h1>
+        <ul>
+            <li><strong>Data Consistency:</strong> Ensures uniformity of data even with multiple users accessing it.</li>
+            <li><strong>Data Security:</strong> Provides features like user authentication and access control.</li>
+            <li><strong>Efficient Data Management:</strong> Handles large amounts of data with optimized performance.</li>
+            <li><strong>Backup and Recovery:</strong> Automates data backups and provides recovery options.</li>
+            <li><strong>Reduces Redundancy:</strong> Avoids duplicate data storage with normalization techniques.</li>
+            <li><strong>Improved Data Sharing:</strong> Multiple users can access and work on data simultaneously.</li>
+            <li><strong>Flexibility:</strong> Supports various queries and reporting tools for analyzing data.</li>
+        </ul>
+    
+        <h1>4. Entities, Attributes, and Relationships</h1>
+        <h2>Entities:</h2>
+        <p>These are the "things" or "objects" in your database. For example, in a university database, entities could be Student, Course, and Professor. Think of entities as nouns.</p>
+        
+        <h2>Attributes:</h2>
+        <p>These are the properties or characteristics of an entity. For example:</p>
+        <ul>
+            <li><strong>Student:</strong> Name, Roll Number, Age.</li>
+            <li><strong>Course:</strong> Course ID, Name, Duration.</li>
+        </ul>
+        
+        <h2>Relationships:</h2>
+        <p>These define how entities are connected. For example:</p>
+        <ul>
+            <li>A Student "enrolls in" a Course (1-to-many relationship).</li>
+            <li>A Professor "teaches" multiple Courses (1-to-many relationship).</li>
+        </ul>
+    
+        <h1>5. Keys</h1>
+        <p>Keys are used to uniquely identify rows in a table or establish relationships between tables.</p>
+        <h2>Primary Key:</h2>
+        <p>A column or combination of columns that uniquely identifies a row in a table.</p>
+        <p>Example: In the Student table, StudentID is the Primary Key.</p>
+    
+        <h2>Foreign Key:</h2>
+        <p>A column in one table that refers to the Primary Key of another table, establishing a relationship.</p>
+        <p>Example: In an Enrollment table, StudentID (Foreign Key) links to the Student table's Primary Key.</p>
+    
+        <h2>Candidate Key:</h2>
+        <p>All the columns that can uniquely identify rows are Candidate Keys. One of these is chosen as the Primary Key.</p>
+        <p>Example: In a User table, both Email and PhoneNumber could be Candidate Keys.</p>
+    
+        <h2>Alternate Key:</h2>
+        <p>Candidate Keys that are not selected as the Primary Key.</p>
+        <p>Example: If Email is the Primary Key, PhoneNumber becomes an Alternate Key.</p>
+    
+        <h2>Composite Key:</h2>
+        <p>A Primary Key made up of two or more columns.</p>
+        <p>Example: In an OrderDetails table, OrderID and ProductID together form a Composite Key.</p>
+    
+        <h2>Super Key:</h2>
+        <p>Any set of columns that can uniquely identify rows in a table. It includes the Primary Key and other combinations that are unique.</p>
+    
+        <h1>6. Database Architecture: Levels of Abstraction</h1>
+        <h2>Physical Level</h2>
+        <p>This is the lowest level of abstraction and deals with the actual storage of data on hardware. It includes details like file structures, indexes, and data blocks.</p>
+        <p>Example: How rows of a table are stored as blocks on a disk or SSD.</p>
+        <p><strong>Key Use:</strong> Database administrators (DBAs) optimize this for performance and storage efficiency.</p>
+    
+        <h2>Logical Level</h2>
+        <p>Defines what data is stored and the relationships between them without considering physical implementation. It represents the database schema, including tables, attributes, constraints, and relationships.</p>
+        <p>Example: A Student table has attributes: StudentID, Name, Age. Relationships like: A student "enrolls in" a course.</p>
+        <p><strong>Key Use:</strong> Focused on how data is organized and structured.</p>
+    
+        <h2>View Level</h2>
+        <p>The highest level of abstraction, showing only part of the database relevant to a specific user or group. It hides details of the Logical and Physical levels, providing a simplified interface.</p>
+        <p>Example: A Professor only sees the courses they teach and the enrolled students (not the entire database).</p>
+        <p><strong>Key Use:</strong> Provides security and tailored access by restricting visibility to necessary data.</p>
+    
+        <h2>Analogy:</h2>
+        <ul>
+            <li><strong>Physical Level:</strong> Think of it as the foundation and wiring of a house (plumbing, electricity).</li>
+            <li><strong>Logical Level:</strong> This is the architectural blueprint showing the structure and rooms.</li>
+            <li><strong>View Level:</strong> This is the visible interior design you see and use daily.</li>
+        </ul>
+    
+        <h1>7. ER Diagrams (Entity-Relationship Diagrams)</h1>
+        <p>ER Diagram is a visual representation of entities, attributes, and relationships in a database. It helps in designing the database by providing a clear structure of how data is organized and connected.</p>
+        <h2>Key Components of ER Diagrams:</h2>
+        <ul>
+            <li><strong>Entities:</strong> Represented as rectangles. Example: Student, Course.</li>
+            <li><strong>Attributes:</strong> Represented as ovals connected to entities.</li>
+            <ul>
+                <li><strong>Key Attribute:</strong> Uniquely identifies an entity (e.g., StudentID).</li>
+                <li><strong>Derived Attribute:</strong> Can be calculated from other data (e.g., Age from DateOfBirth).</li>
+                <li><strong>Multivalued Attribute:</strong> Can have multiple values (e.g., PhoneNumbers).</li>
+            </ul>
+            <li><strong>Relationships:</strong> Represented as diamonds connecting entities. Example: A Student "enrolls in" a Course.</li>
+            <li><strong>Cardinality:</strong> Shows the number of entities involved in a relationship. Example: One-to-One (1:1), One-to-Many (1:N), Many-to-Many (M:N).</li>
+        </ul>
+    
+        <h1>8. Schema</h1>
+        <p>A schema is the blueprint of a database, showing its logical structure. It defines the tables, columns, data types, and relationships.</p>
+        <h2>Types of Schema:</h2>
+        <ul>
+            <li><strong>Physical Schema:</strong> Details the actual storage of data on disk, like file structures and indexes.</li>
+            <li><strong>Logical Schema:</strong> Describes tables, fields, relationships, and constraints without detailing physical storage.</li>
+            <li><strong>View Schema:</strong> Defines how data is presented to users (e.g., restricted access).</li>
+        </ul>
+        <p><strong>Example of Logical Schema:</strong></p>
+        <pre>
+            CREATE TABLE Student (
+                StudentID INT PRIMARY KEY,
+                Name VARCHAR(50),
+                Age INT
+            );
+            
+            CREATE TABLE Course (
+                CourseID INT PRIMARY KEY,
+                CourseName VARCHAR(50)
+            );
+            
+            CREATE TABLE Enrollment (
+                StudentID INT,
+                CourseID INT,
+                PRIMARY KEY (StudentID, CourseID),
+                FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+                FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
+            );
+        </pre>
+    
+    
+    <section>
+        <h2>9. Relational Algebra</h2>
+        <p>Relational Algebra is a query language used in databases to retrieve data in a structured and mathematical way. It consists of various operations to manipulate and retrieve data from relations (tables).</p>
+        <h3>Basic Operations:</h3>
+        <ul>
+            <li><strong>Select (σ)</strong>: Filters rows (tuples) based on a condition.<br>
+                Syntax: <code>σ_condition(Relation)</code><br>
+                <div class="example">Example: <br>
+                    Table: <em>Student(ID, Name, Age)</em><br>
+                    Query: <code>σ_Age > 18(Student)</code><br>
+                    Retrieves all students older than 18.
+                </div>
+            </li>
+            <li><strong>Project (π)</strong>: Filters columns (attributes).<br>
+                Syntax: <code>π_attribute_list(Relation)</code><br>
+                <div class="example">Example: <br>
+                    Query: <code>π_Name, Age(Student)</code><br>
+                    Retrieves only the <em>Name</em> and <em>Age</em> columns from the <em>Student</em> table.
+                </div>
+            </li>
+            <li><strong>Union (∪)</strong>: Combines rows from two relations, removing duplicates.<br>
+                Syntax: <code>Relation1 ∪ Relation2</code><br>
+                Condition: Both relations must have the same schema.
+            </li>
+            <li><strong>Intersection (∩)</strong>: Retrieves rows common to both relations.<br>
+                Syntax: <code>Relation1 ∩ Relation2</code>
+            </li>
+            <li><strong>Difference (-)</strong>: Retrieves rows present in the first relation but not in the second.<br>
+                Syntax: <code>Relation1 - Relation2</code>
+            </li>
+        </ul>
+        <h3>Advanced Operations:</h3>
+        <ul>
+            <li><strong>Cartesian Product (×)</strong>: Combines every row of the first relation with every row of the second relation.<br>
+                Syntax: <code>Relation1 × Relation2</code>
+            </li>
+            <li><strong>Join (⋈)</strong>: Combines rows from two relations based on a condition.<br>
+                Syntax: <code>Relation1 ⋈ condition Relation2</code>
+            </li>
+        </ul>
+        <h3>Summary Table:</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Symbol</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Select</td>
+                        <td>σ</td>
+                        <td>Filters rows based on a condition</td>
+                    </tr>
+                    <tr>
+                        <td>Project</td>
+                        <td>π</td>
+                        <td>Filters specific columns</td>
+                    </tr>
+                    <tr>
+                        <td>Union</td>
+                        <td>∪</td>
+                        <td>Combines rows (no duplicates)</td>
+                    </tr>
+                    <tr>
+                        <td>Intersection</td>
+                        <td>∩</td>
+                        <td>Common rows between relations</td>
+                    </tr>
+                    <tr>
+                        <td>Difference</td>
+                        <td>-</td>
+                        <td>Rows in one relation but not the other</td>
+                    </tr>
+                    <tr>
+                        <td>Cartesian Product</td>
+                        <td>×</td>
+                        <td>Combines all rows from both relations</td>
+                    </tr>
+                    <tr>
+                        <td>Join</td>
+                        <td>⋈</td>
+                        <td>Combines rows based on a condition</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section>
+        <h2>10. Normalization in Databases</h2>
+        <p>Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity.</p>
+        <h3>Normal Forms:</h3>
+        <ul>
+            <li><strong>First Normal Form (1NF)</strong>: Atomic values, unique rows, no repeating groups.</li>
+            <li><strong>Second Normal Form (2NF)</strong>: 1NF + No partial dependency.</li>
+            <li><strong>Third Normal Form (3NF)</strong>: 2NF + No transitive dependency.</li>
+            <li><strong>Boyce-Codd Normal Form (BCNF)</strong>: 3NF + Every determinant is a candidate key.</li>
+        </ul>
+    </section>
+    
+        <h1>Database Concepts</h1>
+
+        <h2>Indexing in Databases</h2>
+        <p><strong>Why Indexing is Important:</strong> Indexing improves the performance of query operations by reducing the amount of data the database has to scan. With an index, the database can quickly locate the data without scanning every row in a table, similar to how an index in a book helps you quickly find a topic.</p>
+        <ul>
+            <li><strong>Performance Improvement:</strong> Without indexes, the database might perform a full table scan, which can be slow for large datasets.</li>
+            <li><strong>Faster Search:</strong> Searching for specific rows becomes faster with an index on the relevant columns.</li>
+            <li><strong>Sorting and Joining:</strong> Sorting and joining operations are optimized when indexes are present on the columns involved.</li>
+        </ul>
+
+        <h3>Types of Indexes:</h3>
+        <ul>
+            <li><strong>Single-Column Index:</strong> Index created on a single column.<br>
+                Example:
+                <div class="example">
+                    <code>CREATE INDEX idx_name ON students (name);</code>
+                </div>
+            </li>
+            <li><strong>Multi-Column Index (Composite Index):</strong> Index created on multiple columns.<br>
+                Example:
+                <div class="example">
+                    <code>CREATE INDEX idx_name ON students (first_name, last_name);</code>
+                </div>
+            </li>
+            <li><strong>Unique Index:</strong> Ensures that the values in the indexed column are unique.<br>
+                Example:
+                <div class="example">
+                    <code>CREATE UNIQUE INDEX idx_email ON students (email);</code>
+                </div>
+            </li>
+            <li><strong>Full-Text Index:</strong> Designed for efficient searching of large text fields.<br>
+                Example:
+                <div class="example">
+                    <code>CREATE FULLTEXT INDEX idx_description ON products (description);</code>
+                </div>
+            </li>
+            <li><strong>Clustered Index:</strong> The physical order of rows in the table is the same as the order of the index.</li>
+            <li><strong>Non-Clustered Index:</strong> The order of rows in the table is not related to the index order. Creates a separate structure to store the index.</li>
+        </ul>
+
+        <h2>Transactions in Databases</h2>
+        <h3>Properties of Transactions (ACID):</h3>
+        <ul>
+            <li><strong>Atomicity:</strong> Ensures that a transaction is treated as a single unit, which either completes entirely or does not happen at all.</li>
+            <li><strong>Consistency:</strong> Ensures that a transaction takes the database from one valid state to another, maintaining data integrity.</li>
+            <li><strong>Isolation:</strong> Ensures that the operations of one transaction are isolated from others, even when running concurrently.</li>
+            <li><strong>Durability:</strong> Ensures that once a transaction is committed, the changes are permanent and survive any system crashes.</li>
+        </ul>
+
+        <h3>Commit, Rollback, and Savepoint:</h3>
+        <ul>
+            <li><strong>Commit:</strong> Finalizes a transaction, making all changes permanent.<br>
+                Example:
+                <div class="example">
+                    <code>COMMIT;</code>
+                </div>
+            </li>
+            <li><strong>Rollback:</strong> Undoes all changes made by a transaction.<br>
+                Example:
+                <div class="example">
+                    <code>ROLLBACK;</code>
+                </div>
+            </li>
+            <li><strong>Savepoint:</strong> Allows setting a point within a transaction to which you can roll back without affecting the entire transaction.<br>
+                Example:
+                <div class="example">
+                    <code>SAVEPOINT savepoint_name;</code><br>
+                    <code>ROLLBACK TO SAVEPOINT savepoint_name;</code>
+                </div>
+            </li>
+        </ul>
+
+        <h2>Concurrency Control in Databases</h2>
+        <h3>Locks:</h3>
+        <ul>
+            <li><strong>Shared Lock (Read Lock):</strong> Allows multiple transactions to read the data but prevents modifications.</li>
+            <li><strong>Exclusive Lock (Write Lock):</strong> Prevents any other transaction from reading or writing to the data until the lock is released.</li>
+        </ul>
+
+        <h3>Deadlock Prevention:</h3>
+        <ul>
+            <li><strong>Timeouts:</strong> Transactions are given a time limit to acquire locks. If they cannot obtain locks within the time limit, they are rolled back.</li>
+            <li><strong>Transaction Ordering:</strong> Enforces a strict order of acquiring locks to prevent circular waits.</li>
+        </ul>
+
+        <p>Example of Deadlock Prevention:</p>
+        <div class="example">
+            Transaction A locks Table 1 and waits for Table 2, while Transaction B locks Table 2 and waits for Table 1. Enforcing transaction ordering prevents such circular waits.
+        </div>
+    </div>
+
+
+</body>
+</html>

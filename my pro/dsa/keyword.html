@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+       
+        h1 {
+            color: #c81313;
+            text-align: center;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #7c0303;
+            text-align: left;
+        }
+        th {
+            background-color: #60f602;
+            color: #cd46df;
+        }
+        tr:nth-child(even) {
+            background-color: #b79811;
+        }
+    
+      
+       
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+            background: #d9dbdb;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(1, 74, 151, 0.1);
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #6b0568;
+        }
+        code, pre {
+            background-color: #00a5dc;
+            padding: 5px;
+            font-size: 1em;
+            display: block;
+            overflow-x: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<main>
+    <section>
+        <h2>Final Keyword in Java</h2>
+        <p>The <strong>final</strong> keyword in Java indicates that something cannot be changed. It can be used with variables, methods, and classes:</p>
+        <ul>
+            <li><strong>Final Variables:</strong> Once initialized, their values cannot be changed.</li>
+            <li><strong>Final Methods:</strong> Cannot be overridden by subclasses.</li>
+            <li><strong>Final Classes:</strong> Cannot be inherited by other classes.</li>
+        </ul>
+        <pre><code>final int MAX_VALUE = 100;
+MAX_VALUE = 200; // Compilation error</code></pre>
+    </section>
+
+    <section>
+        <h2>Inheritance in Java - <code>extends</code> Keyword</h2>
+        <p>The <code>extends</code> keyword creates a subclass that inherits fields and methods from a superclass:</p>
+        <pre><code>// Superclass
+class Animal {
+    public void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+// Subclass
+class Dog extends Animal {
+    public void bark() {
+        System.out.println("The dog barks.");
+    }
+}</code></pre>
+    </section>
+
+    <section>
+        <h2>Static Keyword in Java</h2>
+        <p>The <strong>static</strong> keyword allows certain members to belong to the class rather than any object instance. Key uses include:</p>
+        <ul>
+            <li>Static Variables: Shared across all instances.</li>
+            <li>Static Methods: Can be called without creating an instance.</li>
+            <li>Static Blocks: Initialize static variables.</li>
+            <li>Static Nested Classes: Can access static members of the outer class.</li>
+        </ul>
+        <pre><code>public class University {
+    static String universityName = "Global University";
+    static int totalStudents = 0;
+    
+    static class UniversityInfo {
+        void display() {
+            System.out.println("University: " + universityName);
+        }
+    }
+}</code></pre>
+    </section>
+
+    <section>
+        <h2>Is This Useful?</h2>
+        <p>This topic covers important Java concepts, though some may feel certain parts aren't as useful.</p>
+    </section> 
+</main>
+<h1>Java Keywords Reference</h1>
+<p>This table lists common Java keywords and a brief description of their usage.</p>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Keyword</th>
+                <th>Usage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>abstract</td>
+                <td>Specifies that a class or method will be implemented later, in a subclass.</td>
+            </tr>
+            <tr>
+                <td>assert</td>
+                <td>Indicates a condition the developer expects to always be true in that part of the code.</td>
+            </tr>
+            <tr>
+                <td>boolean</td>
+                <td>A data type that can hold True and False values only.</td>
+            </tr>
+            <tr>
+                <td>break</td>
+                <td>A control statement for breaking out of loops.</td>
+            </tr>
+            <tr>
+                <td>byte</td>
+                <td>A data type that can hold 8-bit data values.</td>
+            </tr>
+            <tr>
+                <td>case</td>
+                <td>Marks blocks in a switch statement.</td>
+            </tr>
+            <tr>
+                <td>catch</td>
+                <td>Catches exceptions generated by try statements.</td>
+            </tr>
+            <tr>
+                <td>char</td>
+                <td>A data type that can hold unsigned 16-bit Unicode characters.</td>
+            </tr>
+            <tr>
+                <td>class</td>
+                <td>Declares a new class.</td>
+            </tr>
+            <tr>
+                <td>continue</td>
+                <td>Sends control back outside a loop.</td>
+            </tr>
+            <tr>
+                <td>default</td>
+                <td>Specifies the default block in a switch statement.</td>
+            </tr>
+            <tr>
+                <td>do</td>
+                <td>Starts a do-while loop.</td>
+            </tr>
+            <tr>
+                <td>double</td>
+                <td>A data type that can hold 64-bit floating-point numbers.</td>
+            </tr>
+            <tr>
+                <td>else</td>
+                <td>Specifies an alternate branch in an if statement.</td>
+            </tr>
+            <tr>
+                <td>enum</td>
+                <td>Declares an enumerated type.</td>
+            </tr>
+            <tr>
+                <td>extends</td>
+                <td>Indicates that a class is derived from another class or interface.</td>
+            </tr>
+            <tr>
+                <td>final</td>
+                <td>Indicates a constant value or a method that cannot be overridden.</td>
+            </tr>
+            <tr>
+                <td>finally</td>
+                <td>A block in a try-catch structure that always executes.</td>
+            </tr>
+            <tr>
+                <td>float</td>
+                <td>A data type that holds a 32-bit floating-point number.</td>
+            </tr>
+            <tr>
+                <td>for</td>
+                <td>Used to start a for loop.</td>
+            </tr>
+            <tr>
+                <td>if</td>
+                <td>Tests a true/false expression and branches accordingly.</td>
+            </tr>
+            <tr>
+                <td>implements</td>
+                <td>Specifies that a class implements an interface.</td>
+            </tr>
+            <tr>
+                <td>import</td>
+                <td>References other classes.</td>
+            </tr>
+            <tr>
+                <td>instanceof</td>
+                <td>Indicates if an object is an instance of a specific class or interface.</td>
+            </tr>
+            <tr>
+                <td>int</td>
+                <td>A data type that can hold a 32-bit signed integer.</td>
+            </tr>
+            <tr>
+                <td>interface</td>
+                <td>Declares an interface.</td>
+            </tr>
+            <tr>
+                <td>long</td>
+                <td>A data type that holds a 64-bit integer.</td>
+            </tr>
+            <tr>
+                <td>native</td>
+                <td>Specifies a method implemented with platform-specific code.</td>
+            </tr>
+            <tr>
+                <td>new</td>
+                <td>Creates new objects.</td>
+            </tr>
+            <tr>
+                <td>null</td>
+                <td>Indicates a reference that does not refer to anything.</td>
+            </tr>
+            <tr>
+                <td>package</td>
+                <td>Declares a Java package.</td>
+            </tr>
+            <tr>
+                <td>private</td>
+                <td>An access specifier that restricts access within the declared class.</td>
+            </tr>
+            <tr>
+                <td>protected</td>
+                <td>An access specifier that restricts access within subclasses and the same package.</td>
+            </tr>
+            <tr>
+                <td>public</td>
+                <td>An access specifier that allows access throughout the application.</td>
+            </tr>
+            <tr>
+                <td>return</td>
+                <td>Sends control and possibly a return value back from a method.</td>
+            </tr>
+            <tr>
+                <td>short</td>
+                <td>A data type that can hold a 16-bit integer.</td>
+            </tr>
+            <tr>
+                <td>static</td>
+                <td>Indicates a class-level variable or method.</td>
+            </tr>
+            <tr>
+                <td>strictfp</td>
+                <td>Ensures portability in floating-point calculations.</td>
+            </tr>
+            <tr>
+                <td>super</td>
+                <td>Refers to a superclass.</td>
+            </tr>
+            <tr>
+                <td>switch</td>
+                <td>Executes code based on a test value.</td>
+            </tr>
+            <tr>
+                <td>synchronized</td>
+                <td>Defines critical sections or methods in multithreaded code.</td>
+            </tr>
+            <tr>
+                <td>this</td>
+                <td>Refers to the current object.</td>
+            </tr>
+            <tr>
+                <td>throw</td>
+                <td>Creates an exception.</td>
+            </tr>
+            <tr>
+                <td>throws</td>
+                <td>Indicates what exceptions a method may throw.</td>
+            </tr>
+            <tr>
+                <td>transient</td>
+                <td>Marks a variable as non-persistent.</td>
+            </tr>
+            <tr>
+                <td>try</td>
+                <td>Starts a block tested for exceptions.</td>
+            </tr>
+            <tr>
+                <td>void</td>
+                <td>Indicates no return value for a method.</td>
+            </tr>
+            <tr>
+                <td>volatile</td>
+                <td>Indicates a variable that may change asynchronously.</td>
+            </tr>
+            <tr>
+                <td>while</td>
+                <td>Starts a while loop.</td>
+            </tr>
+            <tr>
+                <td>sealed</td>
+                <td>Declares a sealed class restricting which classes can extend it.</td>
+            </tr>
+            <tr>
+                <td>permits</td>
+                <td>Specifies allowed subclasses in a sealed class.</td>
+            </tr>
+            <tr>
+                <td>const</td>
+                <td>Reserved for future use.</td>
+            </tr>
+            <tr>
+                <td>goto</td>
+                <td>Reserved for future use.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Concepts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        code {
+            background: #f9f9f9;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: #c7254e;
+            font-family: "Courier New", Courier, monospace;
+        }
+        ul {
+            margin: 10px 0;
+            padding: 0 20px;
+        }
+        .example {
+            background: #e8f4fc;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SQL Concepts</h1>
+
+        <h2>1. Data Definition Language (DDL)</h2>
+        <p>Used to define and modify database structure.</p>
+        <table>
+            <tr><th>Command</th><th>Syntax Example</th></tr>
+            <tr><td>CREATE DATABASE</td><td><code>CREATE DATABASE database_name;</code></td></tr>
+            <tr><td>DROP DATABASE</td><td><code>DROP DATABASE database_name;</code></td></tr>
+            <tr><td>CREATE TABLE</td><td><code>CREATE TABLE table_name (column1 datatype, column2 datatype, ...);</code></td></tr>
+            <tr><td>ALTER TABLE</td><td><code>ALTER TABLE table_name ADD column_name datatype;</code><br><code>ALTER TABLE table_name DROP COLUMN column_name;</code><br><code>ALTER TABLE table_name MODIFY column_name datatype;</code></td></tr>
+            <tr><td>DROP TABLE</td><td><code>DROP TABLE table_name;</code></td></tr>
+            <tr><td>TRUNCATE TABLE</td><td><code>TRUNCATE TABLE table_name;</code></td></tr>
+        </table>
+
+        <h2>2. Data Manipulation Language (DML)</h2>
+        <p>Used to manage data within tables.</p>
+        <table>
+            <tr><th>Command</th><th>Syntax Example</th></tr>
+            <tr><td>INSERT</td><td><code>INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);</code></td></tr>
+            <tr><td>SELECT</td><td><code>SELECT column1, column2 FROM table_name;</code><br><code>SELECT * FROM table_name;</code></td></tr>
+            <tr><td>UPDATE</td><td><code>UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;</code></td></tr>
+            <tr><td>DELETE</td><td><code>DELETE FROM table_name WHERE condition;</code></td></tr>
+        </table>
+
+        <h2>3. Data Query Language (DQL)</h2>
+        <p>Used to query data.</p>
+        <table>
+            <tr><th>Command</th><th>Syntax Example</th></tr>
+            <tr><td>SELECT</td><td><code>SELECT column1, column2 FROM table_name WHERE condition;</code></td></tr>
+            <tr><td>WHERE Clause</td><td><code>SELECT * FROM table_name WHERE column_name = value;</code></td></tr>
+            <tr><td>ORDER BY</td><td><code>SELECT * FROM table_name ORDER BY column_name ASC/DESC;</code></td></tr>
+            <tr><td>GROUP BY</td><td><code>SELECT column_name, COUNT(*) FROM table_name GROUP BY column_name;</code></td></tr>
+            <tr><td>HAVING</td><td><code>SELECT column_name FROM table_name GROUP BY column_name HAVING condition;</code></td></tr>
+        </table>
+
+        <h2>4. Data Control Language (DCL)</h2>
+        <p>Used to control access to data.</p>
+        <table>
+            <tr><th>Command</th><th>Syntax Example</th></tr>
+            <tr><td>GRANT</td><td><code>GRANT privilege ON table_name TO user;</code></td></tr>
+            <tr><td>REVOKE</td><td><code>REVOKE privilege ON table_name FROM user;</code></td></tr>
+        </table>
+
+        <h2>5. Transaction Control Language (TCL)</h2>
+        <p>Used to manage transactions in a database.</p>
+        <table>
+            <tr><th>Command</th><th>Syntax Example</th></tr>
+            <tr><td>COMMIT</td><td><code>COMMIT;</code></td></tr>
+            <tr><td>ROLLBACK</td><td><code>ROLLBACK;</code></td></tr>
+            <tr><td>SAVEPOINT</td><td><code>SAVEPOINT savepoint_name;</code></td></tr>
+            <tr><td>SET TRANSACTION</td><td><code>SET TRANSACTION READ WRITE;</code></td></tr>
+        </table>
+
+        <h2>6. Constraints</h2>
+        <p>Used to specify rules for data in a table.</p>
+        <table>
+            <tr><th>Constraint</th><th>Syntax Example</th></tr>
+            <tr><td>NOT NULL</td><td><code>CREATE TABLE table_name (column_name datatype NOT NULL);</code></td></tr>
+            <tr><td>UNIQUE</td><td><code>CREATE TABLE table_name (column_name datatype UNIQUE);</code></td></tr>
+            <tr><td>PRIMARY KEY</td><td><code>CREATE TABLE table_name (column_name datatype PRIMARY KEY);</code></td></tr>
+            <tr><td>FOREIGN KEY</td><td><code>CREATE TABLE table_name (column_name datatype, FOREIGN KEY (column_name) REFERENCES another_table(column_name));</code></td></tr>
+            <tr><td>CHECK</td><td><code>CREATE TABLE table_name (column_name datatype CHECK (condition));</code></td></tr>
+            <tr><td>DEFAULT</td><td><code>CREATE TABLE table_name (column_name datatype DEFAULT value);</code></td></tr>
+        </table>
+
+        <h2>7. Joins</h2>
+        <p>Used to retrieve data from multiple tables.</p>
+        <table>
+            <tr><th>Type</th><th>Syntax Example</th></tr>
+            <tr><td>INNER JOIN</td><td><code>SELECT columns FROM table1 INNER JOIN table2 ON table1.col = table2.col;</code></td></tr>
+            <tr><td>LEFT JOIN</td><td><code>SELECT columns FROM table1 LEFT JOIN table2 ON table1.col = table2.col;</code></td></tr>
+            <tr><td>RIGHT JOIN</td><td><code>SELECT columns FROM table1 RIGHT JOIN table2 ON table1.col = table2.col;</code></td></tr>
+            <tr><td>FULL JOIN</td><td><code>SELECT columns FROM table1 FULL JOIN table2 ON table1.col = table2.col;</code></td></tr>
+        </table>
+
+        <h2>8. Aggregate Functions</h2>
+        <p>Used to perform calculations on data.</p>
+        <table>
+            <tr><th>Function</th><th>Syntax Example</th></tr>
+            <tr><td>COUNT</td><td><code>SELECT COUNT(column_name) FROM table_name;</code></td></tr>
+            <tr><td>SUM</td><td><code>SELECT SUM(column_name) FROM table_name;</code></td></tr>
+            <tr><td>AVG</td><td><code>SELECT AVG(column_name) FROM table_name;</code></td></tr>
+            <tr><td>MAX</td><td><code>SELECT MAX(column_name) FROM table_name;</code></td></tr>
+            <tr><td>MIN</td><td><code>SELECT MIN(column_name) FROM table_name;</code></td></tr>
+        </table>
+
+        <h2>9. Set Operations</h2>
+        <p>Combine results of two or more queries.</p>
+        <table>
+            <tr><th>Operation</th><th>Syntax Example</th></tr>
+            <tr><td>UNION</td><td><code>SELECT column_name FROM table1 UNION SELECT column_name FROM table2;</code></td></tr>
+            <tr><td>UNION ALL</td><td><code>SELECT column_name FROM table1 UNION ALL SELECT column_name FROM table2;</code></td></tr>
+            <tr><td>INTERSECT</td><td><code>SELECT column_name FROM table1 INTERSECT SELECT column_name FROM table2;</code></td></tr>
+            <tr><td>EXCEPT</td><td><code>SELECT column_name FROM table1 EXCEPT SELECT column_name FROM table2;</code></td></tr>
+        </table>
+
+      
+
+
+    
+        <h2>10.Views</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Command</th>
+                    <th>Syntax Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CREATE VIEW</td>
+                    <td><code>CREATE VIEW view_name AS SELECT column1, column2 FROM table_name;</code></td>
+                </tr>
+                <tr>
+                    <td>DROP VIEW</td>
+                    <td><code>DROP VIEW view_name;</code></td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <h2>11.Indexing</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Command</th>
+                    <th>Syntax Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CREATE INDEX</td>
+                    <td><code>CREATE INDEX index_name ON table_name (column_name);</code></td>
+                </tr>
+                <tr>
+                    <td>DROP INDEX</td>
+                    <td><code>DROP INDEX index_name;</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

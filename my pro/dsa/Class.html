@@ -1,0 +1,111 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Java Classes</title>
+    <style>
+        /* Basic styling for the content layout */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #2980b9;
+        }
+        h3 {
+            color: #27ae60;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-left: 3px solid #2980b9;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Understanding Java Classes</h1>
+    <p>A <strong>class</strong> in Java is user-defined and serves as a blueprint for creating objects. It’s like designing a house where the layout is defined by a class, acting as a template for the final structure (object).</p>
+
+    <div class="section">
+        <h2>Class Structure</h2>
+        <ul>
+            <li><strong>Attributes:</strong> Define the characteristics of the class (what the class looks like).</li>
+            <li><strong>Methods:</strong> Define the behavior or actions of the class (what the class does).</li>
+            <li><strong>Objects:</strong> Instances of the class created using its blueprint (what the class is).</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Step 1: Create a Basic Class</h2>
+        <p>Let's start by creating a simple class named <code>Learning</code>.</p>
+        <pre><code>class Main {
+    public static void main(String[] args) {
+        // Main method for execution
+    }
+}
+class Learning {
+    // Empty class definition
+}</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>Step 2: Add Attributes to the Class</h2>
+        <p>Next, we add some attributes to represent the properties of the <code>Learning</code> class.</p>
+        <pre><code>class Learning {
+    String Book_name; // Attribute to store the name of the book
+    int No_book;      // Attribute to store the number of books
+}</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>Step 3: Add a Method to the Class</h2>
+        <p>Now, we include a method in the <code>Learning</code> class to initialize the attributes.</p>
+        <pre><code>class Learning {
+    String Book_name;
+    int No_book;
+    
+    // Method to set the attributes
+    void Humayun_Ahmed(String Book_name, int No_book) {
+        this.Book_name = Book_name;
+        this.No_book = No_book;
+    }
+}</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>Step 3.1: Create a Method Without Arguments</h2>
+        <p>We can also create a method without arguments. Methods without a return type and arguments act like functions.</p>
+        <pre><code>class Learning {
+    String Book_name;
+    int No_book;
+
+    // Method without arguments
+    void Humayun_Ahmed() {
+        // This method doesn't perform any actions or return a value
+    }
+}</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>Step 4: Create an Object</h2>
+        <p>Finally, to use the <code>Learning</code> class, we create an object of it and initialize attributes through a method.</p>
+        <pre><code>class Main {
+    public static void main(String[] args) {
+        // Creating an object of the Learning class
+        Learning learn = new Learning();
+        learn.Humayun_Ahmed("Book Title", 5); // Initialize attributes using the method
+    }
+}</code></pre>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encapsulation in Java</title>
+    <style>
+      body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #2980b9;
+        }
+        h3 {
+            color: #27ae60;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-left: 3px solid #2980b9;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Encapsulation in Java</h1>
+    <p>Encapsulation is one of the four fundamental Object-Oriented Programming (OOP) principles in Java, alongside Abstraction, Inheritance, and Polymorphism. It refers to the bundling of data (variables) and methods that operate on the data into a single unit or class. By controlling access to the data, encapsulation helps ensure the integrity and security of an object’s data.</p>
+
+    <h2>Key Components of Encapsulation</h2>
+    <h3>Access Modifiers:</h3>
+    <ul>
+        <li><strong>Private:</strong> The private modifier restricts access to the members (variables and methods) of a class to within the same class. This is the most restrictive access level.</li>
+        <li><strong>Public:</strong> The public modifier allows members to be accessible from any other class.</li>
+        <li><strong>Protected:</strong> The protected modifier allows access to the members within the same package and also by subclasses in different packages.</li>
+        <li><strong>Default:</strong> If no access modifier is specified, it is considered "package-private" or "default," meaning the member is accessible only within its own package.</li>
+    </ul>
+
+    <h3>Getters and Setters:</h3>
+    <p>Getters are methods that retrieve the value of a private variable. Setters are methods that set or update the value of a private variable. These methods provide a controlled way of accessing and modifying the variables while protecting the integrity of the data.</p>
+  
+    <pre><code>public class Person {
+    private String name;
+    private int age;
+
+    // Getter for name
+    public String getName() {
+        return name;
+    }
+
+    // Setter for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter for age
+    public int getAge() {
+        return age;
+    }
+
+    // Setter for age
+    public void setAge(int age) {
+        if (age &gt; 0) {  // Basic validation
+            this.age = age;
+        }
+    }
+}</code></pre>
+
+    <h2>Detailed Explanation of How Encapsulation Works</h2>
+    <h3>Bundling of Data and Methods:</h3>
+    <p>Encapsulation means bundling the data (attributes or fields) and the methods (functions or behaviors) that operate on that data into a single unit, typically a class. For example, if you have a <code>Car</code> class, the data might include attributes like speed and fuel, and the methods might include actions like <code>accelerate()</code> and <code>brake()</code>. The <code>Car</code> class encapsulates both the attributes and the behaviors related to a car.</p>
+  
+    <pre><code>public class Car {
+    private int speed;
+    private double fuel;
+
+    public void accelerate() {
+        speed += 10;
+        fuel -= 0.5;
+    }
+
+    public void brake() {
+        speed -= 10;
+    }
+}</code></pre>
+
+    <h3>Control Over Data:</h3>
+    <p>With encapsulation, you control how the data within a class is accessed and modified. You do this by making the fields private and providing public methods (getters and setters) to access and update these fields. This control allows you to ensure that the data remains in a valid state. For example, you can validate inputs before allowing changes to the data.</p>
+
+    <pre><code>public class BankAccount {
+    private double balance;
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void deposit(double amount) {
+        if (amount &gt; 0) {
+            balance += amount;
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount &gt; 0 && amount &lt;= balance) {
+            balance -= amount;
+        }
+    }
+}</code></pre>
+
+    <h3>Information Hiding:</h3>
+    <p>Encapsulation also enables information hiding, meaning that the internal implementation details of a class are hidden from other classes. Only the necessary information is exposed through a public interface. This separation of concerns makes the system easier to maintain and modify. For instance, you can change the internal implementation of the <code>BankAccount</code> class (e.g., how balance is calculated) without affecting any other part of the code that uses this class.</p>
+</body>
+</html>

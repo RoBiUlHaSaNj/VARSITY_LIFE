@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polymorphism in Java</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #2980b9;
+        }
+        h3 {
+            color: #27ae60;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-left: 3px solid #2980b9;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Polymorphism in Java</h1>
+    <p>Polymorphism in Java is one of the core concepts of object-oriented programming (OOP), allowing objects to be treated as instances of their parent class, rather than their actual class. The term "polymorphism" means "many shapes" and refers to the ability of a single function or method to operate on different types of objects.</p>
+
+    <h2>Types of Polymorphism in Java</h2>
+
+    <h3>1. Compile-time Polymorphism (Static Polymorphism)</h3>
+    <p>Also known as method overloading. It occurs when multiple methods in the same class have the same name but different parameters (different type, number, or order of parameters). The decision about which method to invoke is made during compile-time.</p>
+
+    <pre><code>class MathOperations {
+        // Method with two parameters
+        int add(int a, int b) {
+            return a + b;
+        }
+
+        // Method with three parameters
+        int add(int a, int b, int c) {
+            return a + b + c;
+        }
+
+        // Method with double parameters
+        double add(double a, double b) {
+            return a + b;
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            MathOperations math = new MathOperations();
+            System.out.println(math.add(5, 10));        // Calls add(int, int)
+            System.out.println(math.add(5, 10, 15));    // Calls add(int, int, int)
+            System.out.println(math.add(5.5, 10.5));    // Calls add(double, double)
+        }
+    }</code></pre>
+
+    <h3>2. Runtime Polymorphism (Dynamic Polymorphism)</h3>
+    <p>Also known as method overriding. It occurs when a subclass provides a specific implementation of a method that is already defined in its superclass. The decision about which method to invoke is made at runtime.</p>
+
+    <pre><code>class Animal {
+        void sound() {
+            System.out.println("Animal makes a sound");
+        }
+    }
+
+    class Dog extends Animal {
+        @Override
+        void sound() {
+            System.out.println("Dog barks");
+        }
+    }
+
+    class Cat extends Animal {
+        @Override
+        void sound() {
+            System.out.println("Cat meows");
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Animal myAnimal = new Animal(); // Animal reference, Animal object
+            Animal myDog = new Dog();       // Animal reference, Dog object
+            Animal myCat = new Cat();       // Animal reference, Cat object
+
+            myAnimal.sound();  // Calls Animal's sound
+            myDog.sound();     // Calls Dog's sound (runtime polymorphism)
+            myCat.sound();     // Calls Cat's sound (runtime polymorphism)
+        }
+    }</code></pre>
+
+    <h3>Key Points about Polymorphism in Java</h3>
+    <ul>
+        <li><strong>Method Overloading (Compile-time Polymorphism):</strong> Allows different methods with the same name in the same class to be called based on different parameters. The method signature (name + parameter list) is used to distinguish between overloaded methods. Cannot be achieved by changing only the return type of the methods.</li>
+        <li><strong>Method Overriding (Runtime Polymorphism):</strong> Allows a subclass to provide a specific implementation of a method that is already defined in its superclass. The overridden method must have the same name, return type, and parameter list as the method in the superclass. Can be achieved only with inheritance. Uses the concept of dynamic method dispatch, where the JVM determines the appropriate method to invoke at runtime based on the object's actual class.</li>
+        <li><strong>Advantages of Polymorphism:</strong>
+            <ul>
+                <li><em>Code Reusability:</em> The same method can work with different types of data or objects, making the code more reusable.</li>
+                <li><em>Maintainability:</em> Makes it easier to manage and extend the code as you can override methods in subclasses without altering the superclass.</li>
+                <li><em>Flexibility:</em> Allows for creating flexible and scalable programs where new object types can be added with minimal changes to existing code.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>3. Polymorphism and Interfaces</h3>
+    <p>Polymorphism in Java is also closely associated with interfaces. A class can implement multiple interfaces, and an object of that class can be treated as an instance of any of the interfaces it implements.</p>
+
+    <pre><code>interface Animal {
+        void sound();
+    }
+
+    class Dog implements Animal {
+        public void sound() {
+            System.out.println("Dog barks");
+        }
+    }
+
+    class Cat implements Animal {
+        public void sound() {
+            System.out.println("Cat meows");
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Animal myDog = new Dog(); // Interface reference, Dog object
+            Animal myCat = new Cat(); // Interface reference, Cat object
+
+            myDog.sound();  // Calls Dog's sound
+            myCat.sound();  // Calls Cat's sound
+        }
+    }</code></pre>
+
+    <p>In this example, both Dog and Cat implement the Animal interface, and polymorphism allows the sound() method to be called on Animal references, leading to the appropriate method being invoked at runtime based on the actual object type.</p>
+
+</body>
+</html>

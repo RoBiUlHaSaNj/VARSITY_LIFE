@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP Concepts in Java</title>
+    <style>
+            body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #2980b9;
+        }
+        h3 {
+            color: #27ae60;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-left: 3px solid #2980b9;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Object-Oriented Programming Concepts in Java</h1>
+
+    <h2>1. Class and Object</h2>
+    <p><strong>Class:</strong> A class is a blueprint for creating objects. It defines a data structure and behavior by specifying the properties (fields/attributes) and methods (functions) that the objects created from the class will have.</p>
+    <p><strong>Object:</strong> An object is an instance of a class. It represents a specific entity with the attributes and behaviors defined by its class.</p>
+
+    <h2>2. Encapsulation</h2>
+    <p><strong>Encapsulation:</strong> Encapsulation is the mechanism of bundling the data (fields) and the methods (functions) that operate on the data into a single unit, or class. It also involves restricting access to certain components, usually by making fields private and providing public getter and setter methods to modify and view the fields' values.</p>
+
+    <h2>3. Inheritance</h2>
+    <p><strong>Inheritance:</strong> Inheritance is the mechanism by which one class (child or subclass) can inherit the properties and methods of another class (parent or superclass). This promotes code reusability and establishes a relationship between the parent and child classes.</p>
+
+    <h2>4. Polymorphism</h2>
+    <p><strong>Polymorphism:</strong> Polymorphism allows objects to be treated as instances of their parent class rather than their actual class. It allows a single method to perform different tasks based on the object that it is acting upon.</p>
+    <ul>
+        <li><strong>Method Overloading:</strong> Same method name but different parameters (within the same class).</li>
+        <li><strong>Method Overriding:</strong> A child class provides a specific implementation of a method that is already defined in its parent class.</li>
+    </ul>
+
+    <h2>5. Abstraction</h2>
+    <p><strong>Abstraction:</strong> Abstraction is the concept of hiding the complex implementation details and showing only the essential features of an object. In Java, abstraction can be achieved using abstract classes and interfaces.</p>
+    <ul>
+        <li><strong>Abstract Class:</strong> A class that cannot be instantiated on its own and may contain abstract methods (methods without a body).</li>
+        <li><strong>Interface:</strong> An interface is a reference type that contains abstract methods that a class must implement. Unlike abstract classes, a class can implement multiple interfaces.</li>
+    </ul>
+
+    <h2>6. Association, Aggregation, and Composition</h2>
+    <p><strong>Association:</strong> A relationship between two objects where one object uses or interacts with another. It's a loosely coupled relationship.</p>
+    <pre><code>class Driver {
+    private String name;
+    private Car car;
+}</code></pre>
+
+    <p><strong>Aggregation:</strong> A specialized form of Association where the child can exist independently of the parent. It represents a "Has-A" relationship.</p>
+    <pre><code>class Department {
+    private String name;
+}
+
+class University {
+    private Department department; // Aggregation
+}</code></pre>
+
+    <p><strong>Composition:</strong> A stronger form of Aggregation where the child cannot exist independently of the parent. If the parent object is destroyed, the child objects are also destroyed.</p>
+    <pre><code>class Engine {
+    private String type;
+}
+
+class Car {
+    private Engine engine; // Composition
+}</code></pre>
+</body>
+</html>

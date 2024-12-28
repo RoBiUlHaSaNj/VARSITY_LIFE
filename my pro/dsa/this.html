@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The `this` Keyword in Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        pre {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-left: 5px solid #ccc;
+            overflow-x: auto;
+        }
+        .output {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-left: 5px solid #0e76a8;
+            color: #0e76a8;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>The `this` Keyword in Java</h1>
+    <p>In Java, the <code>this</code> keyword is a reference variable that refers to the current instance of a class. It is used within instance methods, constructors, and instance initializer blocks to refer to the current object. The <code>this</code> keyword is particularly useful for:</p>
+    <ol>
+        <li>Distinguishing Instance Variables from Parameters</li>
+        <li>Calling Other Constructors (Constructor Chaining)</li>
+        <li>Returning the Current Object</li>
+        <li>Accessing Instance Members from Inner Classes</li>
+    </ol>
+
+    <h2>1. Distinguishing Instance Variables from Parameters</h2>
+    <p>When local variables or method parameters have the same names as instance variables, <code>this</code> helps to differentiate between them.</p>
+
+    <pre><code>public class Person {
+    private String name;
+    private int age;
+
+    // Constructor with parameters having the same names as instance variables
+    public Person(String name, int age) {
+        this.name = name;  // 'this.name' refers to the instance variable
+        this.age = age;    // 'this.age' refers to the instance variable
+    }
+
+    public void display() {
+        System.out.println("Name: " + this.name); // 'this.name' is optional here
+        System.out.println("Age: " + this.age);   // 'this.age' is optional here
+    }
+
+    public static void main(String[] args) {
+        Person person = new Person("Alice", 30);
+        person.display();
+    }
+}
+</code></pre>
+
+    <div class="output">Output:<br>
+        Name: Alice<br>
+        Age: 30
+    </div>
+
+    <h2>2. Calling Other Constructors (Constructor Chaining)</h2>
+    <p><code>this()</code> can be used to call one constructor from another constructor in the same class. This is known as constructor chaining.</p>
+
+    <pre><code>public class Rectangle {
+    private int length;
+    private int width;
+
+    // Default constructor
+    public Rectangle() {
+        this(1, 1); // Calls the parameterized constructor
+    }
+
+    // Parameterized constructor
+    public Rectangle(int length, int width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    public void display() {
+        System.out.println("Length: " + length);
+        System.out.println("Width: " + width);
+    }
+
+    public static void main(String[] args) {
+        Rectangle rect1 = new Rectangle(); // Calls default constructor
+        Rectangle rect2 = new Rectangle(5, 10); // Calls parameterized constructor
+        
+        rect1.display();
+        rect2.display();
+    }
+}
+</code></pre>
+
+    <div class="output">Output:<br>
+        Length: 1<br>
+        Width: 1<br>
+        Length: 5<br>
+        Width: 10
+    </div>
+
+    <h2>3. Returning the Current Object</h2>
+    <p><code>this</code> can be used to return the current object from a method. This is useful in method chaining or fluent interfaces.</p>
+
+    <pre><code>public class Car {
+    private String model;
+    private int year;
+
+    public Car setModel(String model) {
+        this.model = model;
+        return this; // Returns the current object
+    }
+
+    public Car setYear(int year) {
+        this.year = year;
+        return this; // Returns the current object
+    }
+
+    public void display() {
+        System.out.println("Model: " + model);
+        System.out.println("Year: " + year);
+    }
+
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.setModel("Toyota").setYear(2023); // Method chaining
+        car.display();
+    }
+}
+</code></pre>
+
+    <div class="output">Output:<br>
+        Model: Toyota<br>
+        Year: 2023
+    </div>
+
+    <h2>4. Accessing Instance Members from Inner Classes</h2>
+    <p>In an inner class, <code>this</code> refers to the instance of the inner class. To refer to the instance of the outer class, you can use <code>OuterClassName.this</code>.</p>
+
+    <pre><code>public class OuterClass {
+    private String outerField = "Outer field";
+
+    class InnerClass {
+        private String innerField = "Inner field";
+
+        void display() {
+            System.out.println("Accessing from InnerClass:");
+            System.out.println("Inner field: " + innerField);
+            System.out.println("Outer field: " + OuterClass.this.outerField); // Accessing outer class member
+        }
+    }
+
+    public static void main(String[] args) {
+        OuterClass outer = new OuterClass();
+        OuterClass.InnerClass inner = outer.new InnerClass();
+        inner.display();
+    }
+}
+</code></pre>
+
+    <div class="output">Output:<br>
+        Accessing from InnerClass:<br>
+        Inner field: Inner field<br>
+        Outer field: Outer field
+    </div>
+
+</body>
+</html>

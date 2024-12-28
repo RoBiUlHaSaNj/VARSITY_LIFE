@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Inheritance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #2980b9;
+        }
+        h3 {
+            color: #27ae60;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-left: 3px solid #2980b9;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Inheritance in Java</h1>
+    <p>Inheritance is a fundamental concept in Java that allows one class to inherit properties (fields) and behaviors (methods) from another class. This promotes code reusability and establishes a relationship between classes.</p>
+
+    <h2>1. Inheritance Basics</h2>
+    <h3>Superclass and Subclass</h3>
+    <p>A superclass (or parent class) is the class from which properties and methods are inherited by another class, known as the subclass (or child class).</p>
+    <h3>extends Keyword</h3>
+    <p>Used to define a subclass that inherits from a superclass.</p>
+    <pre><code>class SubclassName extends SuperclassName {
+    // additional fields and methods
+}</code></pre>
+
+    <h2>2. Types of Inheritance</h2>
+    <h3>Single Inheritance</h3>
+    <p>One subclass inherits from one superclass.</p>
+    <pre><code>// Parent class
+class One {
+    public void print_geek() {
+        System.out.println("Geeks");
+    }
+}
+
+class Two extends One {
+    public void print_for() { System.out.println("for"); }
+}
+
+// Driver class
+public class Main {
+    public static void main(String[] args) {
+        Two g = new Two();
+        g.print_geek();
+        g.print_for();
+    }
+}</code></pre>
+
+    <h3>Multilevel Inheritance</h3>
+    <pre><code>// Parent class One
+class One {
+    public void print_geek() {
+        System.out.println("Geeks");
+    }
+}
+
+// Child class Two inherits from class One
+class Two extends One {
+    public void print_for() {
+        System.out.println("for");
+    }
+}
+
+// Child class Three inherits from class Two
+class Three extends Two {
+    public void print_lastgeek() {
+        System.out.println("Geeks");
+    }
+}
+
+// Driver class
+public class Main {
+    public static void main(String[] args) {
+        Three g = new Three();
+        g.print_geek();
+        g.print_for();
+        g.print_lastgeek();
+    }
+}</code></pre>
+
+    <h3>Hierarchical Inheritance</h3>
+    <pre><code>class A {
+    public void print_A() { System.out.println("Class A"); }
+}
+
+class B extends A {
+    public void print_B() { System.out.println("Class B"); }
+}
+
+class C extends A {
+    public void print_C() { System.out.println("Class C"); }
+}
+
+class D extends A {
+    public void print_D() { System.out.println("Class D"); }
+}
+
+// Driver Class
+public class Test {
+    public static void main(String[] args) {
+        B obj_B = new B();
+        obj_B.print_A();
+        obj_B.print_B();
+
+        C obj_C = new C();
+        obj_C.print_A();
+        obj_C.print_C();
+
+        D obj_D = new D();
+        obj_D.print_A();
+        obj_D.print_D();
+    }
+}</code></pre>
+
+    <h3>Multiple Inheritance</h3>
+    <pre><code>interface One {
+    public void print_geek();
+}
+
+interface Two {
+    public void print_for();
+}
+
+interface Three extends One, Two {
+    public void print_geek();
+}
+
+class Child implements Three {
+    @Override
+    public void print_geek() {
+        System.out.println("Geeks");
+    }
+    
+    public void print_for() {
+        System.out.println("for");
+    }
+}
+
+// Driver class
+public class Main {
+    public static void main(String[] args) {
+        Child c = new Child();
+        c.print_geek();
+        c.print_for();
+    }
+}</code></pre>
+
+    <h2>3. Method Overriding</h2>
+    <p>A subclass can provide a specific implementation of a method already defined in its superclass.</p>
+    <pre><code>class Animal {
+    Animal() {
+        System.out.println("Animal constructor");
+    }
+}
+
+class Dog extends Animal {
+    Dog() {
+        super(); // Calls the superclass constructor
+        System.out.println("Dog constructor");
+    }
+}</code></pre>
+
+    <h2>4. Access Control</h2>
+    <ul>
+        <li><strong>private:</strong> Not accessible in the subclass.</li>
+        <li><strong>protected:</strong> Accessible within the subclass.</li>
+        <li><strong>public:</strong> Accessible everywhere.</li>
+        <li><strong>default (no modifier):</strong> Accessible within the same package.</li>
+    </ul>
+
+    <h2>5. Final Keyword</h2>
+    <p>A class marked as final cannot be extended. A method marked as final cannot be overridden.</p>
+    <pre><code>final class Animal {
+    // Class cannot be extended
+}</code></pre>
+
+    <h2>6. Example of Method Overriding and super Keyword</h2>
+    <pre><code>class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        super.sound(); // Calls the superclass method
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.sound(); // Calls the overridden method
+    }
+}</code></pre>
+
+
+<h1>Abstract Classes and Interfaces in Java</h1>
+
+    <h2>Abstract Classes</h2>
+    <p>
+        Abstract classes and abstract methods are key concepts in Java's object-oriented programming, providing a way to define classes and methods that are meant to be extended and implemented by subclasses.
+    </p>
+
+    <h3>1. Abstract Class</h3>
+    <p>
+        An abstract class is a class that cannot be instantiated on its own. It is meant to be subclassed, and it can contain both abstract methods (without a body) and non-abstract methods (with a body). Abstract classes can also have member variables, constructors, and concrete methods. Abstract classes are declared using the <code>abstract</code> keyword.
+    </p>
+    <pre><code>abstract class Animal {
+    // Abstract method (does not have a body)
+    abstract void sound();
+
+    // Concrete method
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+</code></pre>
+    <p>
+        In this example, <code>Animal</code> is an abstract class. It has an abstract method <code>sound()</code> that must be implemented by any subclass, and a concrete method <code>eat()</code> that can be inherited and used by subclasses.
+    </p>
+
+    <h3>2. Abstract Methods</h3>
+    <p>
+        An abstract method is a method that is declared without an implementation (without a method body). It is meant to be overridden by subclasses. Abstract methods can only be defined in abstract classes.
+    </p>
+    <pre><code>abstract class Animal {
+    abstract void sound(); // Abstract method
+
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+class Dog extends Animal {
+    // Implementing the abstract method
+    void sound() {
+        System.out.println("The dog barks.");
+    }
+}
+
+class Cat extends Animal {
+    // Implementing the abstract method
+    void sound() {
+        System.out.println("The cat meows.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        dog.sound(); // Output: The dog barks.
+        dog.eat();   // Output: This animal eats food.
+
+        Animal cat = new Cat();
+        cat.sound(); // Output: The cat meows.
+        cat.eat();   // Output: This animal eats food.
+    }
+}
+</code></pre>
+
+    <h3>3. Key Points</h3>
+    <ul>
+        <li>An abstract class can have both abstract methods (without a body) and concrete methods (with a body).</li>
+        <li>If a class contains at least one abstract method, the class must be declared abstract.</li>
+        <li>Abstract classes cannot be instantiated directly; they must be subclassed.</li>
+        <li>A subclass of an abstract class must implement all abstract methods of the superclass unless the subclass is also abstract.</li>
+    </ul>
+
+    <h3>4. When to Use Abstract Classes</h3>
+    <p>
+        Use abstract classes when you want to define a common base class with some common code (concrete methods) and some methods that must be implemented by subclasses. Abstract classes are useful when creating a template for other classes to follow.
+    </p>
+
+    <h2>Difference Between Abstract Class and Interface</h2>
+
+    <h3>1. Abstract Class</h3>
+    <ul>
+        <li><strong>Purpose:</strong> Abstract classes are used to provide a common base class for other classes, where some methods might have implementations, and some might be abstract.</li>
+        <li><strong>Inheritance:</strong> A class can inherit from only one abstract class (single inheritance).</li>
+        <li><strong>Methods:</strong> Can have both abstract methods and concrete methods.</li>
+        <li><strong>Fields/Properties:</strong> Can have instance variables and fields, and can also include constructors.</li>
+        <li><strong>Accessibility:</strong> Can define access modifiers for methods and properties.</li>
+        <li><strong>Use Case:</strong> Used when you want to share code among several closely related classes.</li>
+    </ul>
+
+    <h3>2. Interface</h3>
+    <ul>
+        <li><strong>Purpose:</strong> Interfaces define a contract that other classes must follow, containing only method signatures.</li>
+        <li><strong>Inheritance:</strong> A class can implement multiple interfaces (multiple inheritance).</li>
+        <li><strong>Methods:</strong> All methods in an interface are implicitly abstract and must be implemented by the classes that implement the interface.</li>
+        <li><strong>Fields/Properties:</strong> Only constants are allowed in interfaces.</li>
+        <li><strong>Accessibility:</strong> All methods in an interface are implicitly public.</li>
+        <li><strong>Use Case:</strong> Used when you want to specify the behavior a class should implement, without dictating how the behavior is implemented.</li>
+    </ul>
+
+    <h3>Key Differences</h3>
+    <ul>
+        <li><strong>Implementation:</strong> Abstract classes can provide some implementation, while interfaces traditionally cannot.</li>
+        <li><strong>Multiple Inheritance:</strong> Interfaces support multiple inheritance, while abstract classes do not.</li>
+        <li><strong>Fields:</strong> Abstract classes can have fields and constructors, whereas interfaces cannot.</li>
+        <li><strong>Flexibility:</strong> Interfaces provide more flexibility because a class can implement multiple interfaces.</li>
+    </ul>
+
+    <h2>Java Interface</h2>
+    <p>
+        An interface is a reference type that can contain only constants, method signatures, default methods, static methods, and nested types. Interfaces are used to specify a set of methods that a class must implement. They provide a way to achieve abstraction and multiple inheritance in Java.
+    </p>
+    <pre><code>interface Animal {
+    // Abstract method
+    void sound();
+
+    // Default method
+    default void eat() {
+        System.out.println("This animal eats food.");
+    }
+
+    // Static method
+    static void sleep() {
+        System.out.println("This animal sleeps.");
+    }
+}
+</code></pre>
+
+    <h3>Implementing Interfaces</h3>
+    <p>
+        A class implements an interface using the <code>implements</code> keyword. The class must provide concrete implementations for all abstract methods defined in the interface. A class can implement multiple interfaces, allowing for a form of multiple inheritance.
+    </p>
+    <pre><code>class Dog implements Animal {
+    // Providing implementation for the abstract method
+    public void sound() {
+        System.out.println("The dog barks.");
+    }
+}
+
+class Cat implements Animal {
+    // Providing implementation for the abstract method
+    public void sound() {
+        System.out.println("The cat meows.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.sound(); // Output: The dog barks.
+        dog.eat();   // Output: This animal eats food.
+        
+        Cat cat = new Cat();
+        cat.sound(); // Output: The cat meows.
+        cat.eat();   // Output: This animal eats food.
+
+        // Static method call
+        Animal.sleep(); // Output: This animal sleeps.
+    }
+}
+</code></pre>
+
+    <h3>Default Methods</h3>
+    <p>
+        Default methods in interfaces allow you to provide a default implementation for methods. This feature was introduced in Java 8 and helps in adding new methods to interfaces without breaking existing implementations.
+    </p>
+
+    <h3>Static Methods</h3>
+    <p>
+        Interfaces can also contain static methods. Static methods in interfaces are not inherited by implementing classes and must be called using the interface name.
+    </p>
+
+    <h3>Multiple Inheritance</h3>
+    <p>
+        Java does not support multiple inheritance with classes, but interfaces provide a way to achieve multiple inheritance by allowing a class to implement multiple interfaces.
+    </p>
+    <pre><code>interface Swimmer {
+    void swim();
+}
+
+interface Flyer {
+    void fly();
+}
+
+class Duck implements Swimmer, Flyer {
+    public void swim() {
+        System.out.println("The duck swims.");
+    }
+
+    public void fly() {
+        System.out.println("The duck flies.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Duck duck = new Duck();
+        duck.swim(); // Output: The duck swims.
+        duck.fly();  // Output: The duck flies.
+    }
+}
+</code></pre>
+
+    <h3>Key Points about Interfaces</h3>
+    <ul>
+        <li>Interfaces provide a way to achieve abstraction and multiple inheritance in Java.</li>
+        <li>All methods in an interface are abstract by default.</li>
+        <li>Classes can implement multiple interfaces, allowing for more flexible design.</li>
+        <li>Interfaces can contain default and static methods, enabling code reuse.</li>
+    </ul>
+
+    <p>
+        Abstract classes and interfaces are fundamental concepts in Java that facilitate abstraction and polymorphism. Understanding when to use each is crucial for designing flexible and maintainable object-oriented systems.
+    </p>
+    <h1>The Diamond Problem in OOP</h1>
+<p>The Diamond Problem occurs when a class inherits from two classes that both inherit from a common base class. The name "Diamond Problem" comes from the shape of the inheritance diagram:</p>
+
+<pre>
+    A
+   / \
+  B   C
+   \ /
+    D
+</pre>
+
+<p>Here’s how it works:</p>
+<ul>
+    <li>Class A is the base class.</li>
+    <li>Classes B and C both inherit from Class A.</li>
+    <li>Class D inherits from both B and C.</li>
+</ul>
+
+<p>In this scenario, Class D has two paths to inherit from Class A:</p>
+<ul>
+    <li>One path through Class B (D → B → A)</li>
+    <li>Another path through Class C (D → C → A)</li>
+</ul>
+
+<p>This creates ambiguity. If Class A has a method (e.g., <code>foo()</code>), and Class D calls <code>foo()</code>, which version of <code>foo()</code> should be called? The one from Class B’s inheritance of A, or from Class C’s?</p>
+
+<h2>1. C++ (Virtual Inheritance)</h2>
+<p>C++ handles this issue using <strong>virtual inheritance</strong>. By making the inheritance of Class A virtual in classes B and C, C++ ensures that only one instance of Class A is inherited by Class D, resolving the ambiguity.</p>
+
+<pre><code class="cpp">
+#include &lt;iostream&gt;
+using namespace std;
+
+class A {
+public:
+    void foo() { cout &lt;&lt; "A's foo" &lt;&lt; endl; }
+};
+
+class B : virtual public A {
+    // B's implementation
+};
+
+class C : virtual public A {
+    // C's implementation
+};
+
+class D : public B, public C {
+    // D's implementation
+};
+
+int main() {
+    D d;
+    d.foo(); // No ambiguity, A's foo is called
+    return 0;
+}
+</code></pre>
+
+<h2>2. Java (Using Interfaces)</h2>
+<p>Java avoids the diamond problem with its single inheritance model, meaning a class can only inherit from one other class. However, Java allows multiple inheritance of interfaces, which do not contain state, hence avoiding the diamond problem.</p>
+<p>If an interface has a default method (from Java 8 onward), and two interfaces provide the same method, the inheriting class must override the method to resolve the conflict:</p>
+
+<pre><code class="java">
+interface A {
+    default void foo() {
+        System.out.println("A's foo");
+    }
+}
+
+interface B extends A {
+    default void foo() {
+        System.out.println("B's foo");
+    }
+}
+
+interface C extends A {
+    default void foo() {
+        System.out.println("C's foo");
+    }
+}
+
+class D implements B, C {
+    public void foo() {
+        B.super.foo();  // Or C.super.foo(); to choose one
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        D d = new D();
+        d.foo(); // Resolves conflict, calls B's foo or C's foo
+    }
+}
+</code></pre>
+
+<h2>3. Python (Method Resolution Order - MRO)</h2>
+<p>Python uses the <strong>Method Resolution Order (MRO)</strong> to handle the diamond problem. It determines the order in which base classes are searched when calling a method. Python uses the C3 linearization algorithm to determine this order.</p>
+
+<pre><code class="python">
+class A:
+    def foo(self):
+        print("A's foo")
+
+class B(A):
+    pass
+
+class C(A):
+    pass
+
+class D(B, C):
+    pass
+
+d = D()
+d.foo()  # Calls A's foo, MRO decides the path
+</code></pre>
+
+<p>In this case, <code>d.foo()</code> will correctly call <code>A</code>'s <code>foo()</code> method, and Python handles the inheritance order through MRO.</p>
+
+<h2>Conclusion</h2>
+<p>The Diamond Problem is a crucial concept in understanding multiple inheritance in object-oriented programming. Each programming language handles it differently, with C++ using virtual inheritance, Java using interfaces, and Python utilizing method resolution order to avoid ambiguity.</p>
+
+<p>For more details, refer to the article on <a href="https://www.digitalocean.com/community/tutorials/multiple-inheritance-in-java" target="_blank">DigitalOcean</a>.</p>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding the Super Keyword in Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #2980b9;
+        }
+        h3 {
+            color: #27ae60;
+        }
+        pre {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-left: 5px solid #ccc;
+            overflow-x: auto;
+        }
+        .output {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-left: 5px solid #0e76a8;
+            color: #0e76a8;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>The <code>super</code> Keyword in Java</h1>
+    <p>In Java, the <code>super</code> keyword is used to refer to the superclass (parent class) of an object. It serves several important purposes when working with inheritance. Here’s how <code>super</code> is used:</p>
+
+    <h2>1. Accessing Superclass Constructors</h2>
+    <p>The <code>super()</code> call is used to invoke a superclass's constructor. If you don't explicitly call <code>super()</code>, the compiler automatically inserts it as the first line in the subclass constructor, provided that the superclass has a no-argument constructor. If the superclass does not have a no-argument constructor, you must call <code>super(arguments)</code> with appropriate arguments matching the constructor in the superclass.</p>
+    
+    <pre><code>class Parent {
+    Parent() {
+        System.out.println("Parent class constructor");
+    }
+}
+
+class Child extends Parent {
+    Child() {
+        super(); // Calls the Parent class constructor
+        System.out.println("Child class constructor");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Child child = new Child();
+    }
+}
+</code></pre>
+
+    <div class="output">Output:<br>
+    Parent class constructor<br>
+    Child class constructor
+    </div>
+
+    <h2>2. Accessing Superclass Methods</h2>
+    <p><code>super.methodName()</code> can be used to call a method from the superclass that has been overridden in the subclass. This is useful when you want to extend or modify the behavior of a method in the subclass while still retaining the original behavior from the superclass.</p>
+    
+    <pre><code>class Parent {
+    void display() {
+        System.out.println("Display method in Parent class");
+    }
+}
+
+class Child extends Parent {
+    void display() {
+        super.display(); // Calls the display method from the Parent class
+        System.out.println("Display method in Child class");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Child child = new Child();
+        child.display();
+    }
+}
+</code></pre>
+
+    <div class="output">Output:<br>
+    Display method in Parent class<br>
+    Display method in Child class
+    </div>
+
+    <h2>3. Accessing Superclass Variables</h2>
+    <p><code>super.variableName</code> can be used to access a variable from the superclass when there’s a name conflict between the superclass and subclass variables.</p>
+    
+    <pre><code>class Parent {
+    int x = 10;
+}
+
+class Child extends Parent {
+    int x = 20;
+
+    void display() {
+        System.out.println("x in Child class: " + x);
+        System.out.println("x in Parent class: " + super.x); // Accesses the x from the Parent class
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Child child = new Child();
+        child.display();
+    }
+}
+</code></pre>
+
+    <div class="output">Output:<br>
+    x in Child class: 20<br>
+    x in Parent class: 10
+    </div>
+
+    <h2>Summary</h2>
+    <ul>
+        <li><code>super</code> is a keyword that refers to the superclass of the current object.</li>
+        <li>It is used to invoke the superclass's constructor, call methods of the superclass, and access superclass variables.</li>
+        <li>This allows you to build on the behavior defined in the superclass while adding or modifying functionality in the subclass.</li>
+    </ul>
+
+</body>
+</html>

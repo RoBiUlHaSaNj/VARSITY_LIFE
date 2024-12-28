@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Objects in Java</title>
+    <style>
+        /* Basic styling for the content layout */
+      
+        .section {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+     
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-left: 3px solid #2980b9;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Understanding Objects in Java</h1>
+    <p>An <strong>object</strong> is an instance of a class. When a class is defined, no memory is allocated until an object of that class is created. Objects are real-world entities that have a state (attributes) and behavior (methods). They are fundamental building blocks of Java programs, interacting through method calls to perform tasks.</p>
+    
+    <div class="section">
+        <h2>Characteristics of Objects</h2>
+        <ul>
+            <li><strong>State (Attributes or Fields):</strong> Represented by variables in a class. For example, a <em>Car</em> object might have attributes like color, model, and year.</li>
+            <li><strong>Behavior (Methods or Functions):</strong> Represented by methods in a class. For example, a <em>Car</em> object might have methods like <code>drive()</code>, <code>brake()</code>, or <code>honk()</code>.</li>
+            <li><strong>Identity:</strong> Each object has a unique identifier, allowing it to interact with other objects.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Defining a Class</h2>
+        <p>First, you define a class with attributes and methods.</p>
+        <pre><code>public class Car {
+    String color;
+    String model;
+    
+    void drive() {
+        System.out.println("The car is driving");
+    }
+}</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>Creating an Object</h2>
+        <p>Once the class is defined, you can create an object from it.</p>
+        <pre><code>public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car(); // Creating an object of the Car class
+        
+        // Set object attributes
+        myCar.color = "Red";
+        myCar.model = "Tesla Model S";
+        
+        // Access object method
+        myCar.drive(); // Outputs: The car is driving
+    }
+}</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>Example with Multiple Objects</h2>
+        <pre><code>public class Main {
+    public static void main(String[] args) {
+        // Create two objects of the Car class
+        Car car1 = new Car();
+        Car car2 = new Car();
+        
+        // Set attributes for car1
+        car1.color = "Blue";
+        car1.model = "BMW X5";
+        
+        // Set attributes for car2
+        car2.color = "Black";
+        car2.model = "Audi A4";
+        
+        // Access methods and attributes
+        car1.drive();  // Outputs: The car is driving
+        car2.drive();  // Outputs: The car is driving
+    }
+}</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>Objects and References</h2>
+        <p>An object is a concrete instance of a class with its own state and behavior. A reference is a variable that holds the memory address of an object.</p>
+        <pre><code>Person person1 = new Person(); // person1 is a reference to a Person object</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>How to Create an Array of Objects</h2>
+        <p>You can create an array that holds multiple objects of a class.</p>
+        <pre><code>public class Car {
+    String color;
+    String model;
+    
+    void drive() {
+        System.out.println(model + " is driving");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an array of Car objects
+        Car[] cars = new Car[3]; // Array of 3 Car objects
+        
+        // Create individual Car objects and assign them to the array
+        cars[0] = new Car();
+        cars[1] = new Car();
+        cars[2] = new Car();
+        
+        // Set attributes for each Car object
+        cars[0].color = "Red";
+        cars[0].model = "Tesla Model S";
+        
+        cars[1].color = "Blue";
+        cars[1].model = "BMW X5";
+        
+        cars[2].color = "Black";
+        cars[2].model = "Audi A4";
+        
+        // Access methods for each object in the array
+        for (int i = 0; i &lt; cars.length; i++) {
+            cars[i].drive();  // Outputs: Tesla Model S is driving, BMW X5 is driving, Audi A4 is driving
+        }
+    }
+}</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>Using a Student Class Example</h2>
+        <pre><code>import java.util.Scanner;
+
+class Student {
+    String name;
+    String id;
+    float cgpa;
+    
+    // Constructor to initialize the attributes
+    Student(String n, String i, float c) {
+        name = n;
+        id = i; 
+        cgpa = c;
+    }
+    
+    // Method to print student details
+    void printStdDetails() {
+        System.out.println("Name: " + name + ", ID: " + id + ", CGPA: " + cgpa);
+    }
+}
+
+public class MyClass {
+    public static void main(String args[]) {
+        // Create an array of 3 Student objects
+        Student std[] = new Student[3];
+        
+        Scanner sc = new Scanner(System.in);
+        
+        // Input loop for student details
+        for(int i = 0; i &lt; 3; i++) {
+            System.out.println("Enter details for student " + (i + 1) + ":");
+            System.out.print("Name: ");
+            String tmpName = sc.next();
+            System.out.print("ID: ");
+            String tmpId = sc.next();
+            System.out.print("CGPA: ");
+            float tmpRes = sc.nextFloat();
+
+            // Create a new Student object and assign it to the array
+            std[i] = new Student(tmpName, tmpId, tmpRes);
+        } 
+        
+        // Close the Scanner
+        sc.close();
+        
+        // Output loop to print student details
+        System.out.println("\nStudent Details:");
+        for(int i = 0; i &lt; 3; i++) {
+            std[i].printStdDetails();
+        } 
+    }
+}</code></pre>
+    </div>
+
+</body>
+</html>
